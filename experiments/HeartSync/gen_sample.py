@@ -1,9 +1,5 @@
-"""
-This example demonstrates how to simulate a 3D beating heart.
-"""
-
-# Copyright (c) 2023 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Copyright (c) 2024 UMONS, https://web.umons.ac.be/en/
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #

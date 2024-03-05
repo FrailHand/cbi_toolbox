@@ -12,8 +12,10 @@ The framework can also be used for experiment design, as geometries can be virtu
   :alt: Demo image
 
 Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
+Copyright (c) 2024 UMONS, https://web.umons.ac.be/en/
 
-Written by François Marelli <francois.marelli@idiap.ch>
+
+Written by François Marelli <francois.marelli@umons.ac.be>
 
 View the source on `github <https://github.com/idiap/cbi_toolbox>`_
 
