@@ -25,7 +25,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--outdir", type=str, default=None)
     parser.add_argument("--time", type=int, default=50)
-    parser.add_argument("--depth", type=int, default=64)
+    parser.add_argument("--depth", type=int, default=256)
+    parser.add_argument("--chunk", type=int, default=5)
     args = parser.parse_args()
 
     if args.outdir is None:
@@ -53,23 +54,32 @@ if __name__ == "__main__":
     # Uniform sampling over one period
     phases = np.linspace(0, 1, args.time, endpoint=False)
 
-    # Basic contraction of the coordinates
-    coords = dynamic.sigsin_beat_3(phases, args.depth)
-    print("Done simulating contraction")
+    sample = np.empty((args.time, args.depth, args.depth, args.depth))
 
-    # Heart walls as an ellipsoid
-    ellipse = primitives.forward_ellipse_3(
-        coords, center=(0.5, 0.5, 0.5), radius=(0.2, 0.3, 0.4)
-    )
-    print("Done simulating the heart wall")
+    for chunk_i in range(int(np.ceil(args.time / args.chunk))):
+        c_phases = phases[chunk_i * args.chunk : (chunk_i + 1) * args.chunk]
 
-    # Adding texture using simplex noise
-    simplex = textures.forward_simplex(coords, scale=20, time=True, seed=0)
-    print("Done simulating the heart texture")
+        # Basic contraction of the coordinates
+        coords = dynamic.sigsin_beat_3(c_phases, args.depth)
+        print(f"Done simulating contraction for chunk {chunk_i+1}")
 
-    del coords
-    simplex += 2
-    simplex /= simplex.max()
-    heart = ellipse * simplex
+        # Heart walls as an ellipsoid
+        ellipse = primitives.forward_ellipse_3(
+            coords, center=(0.5, 0.5, 0.5), radius=(0.2, 0.3, 0.4)
+        )
+        print(f"Done simulating the heart wall for chunk {chunk_i + 1}")
 
-    np.save(outpath / "sample.npy", heart)
+        # Adding texture using simplex noise
+        simplex = textures.forward_simplex(coords, scale=20, time=True, seed=0)
+        print(f"Done simulating the heart texture for chunk {chunk_i + 1}")
+
+        del coords
+        simplex += 2
+        simplex /= simplex.max()
+        heart = ellipse * simplex
+
+        sample[chunk_i * args.chunk : (chunk_i + 1) * args.chunk] = heart
+        del heart
+        print(f"Done for chunk {chunk_i + 1}")
+
+    np.save(outpath / "sample.npy", sample)
