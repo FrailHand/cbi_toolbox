@@ -32,12 +32,13 @@ import glob
 from setuptools import setup, Extension, find_packages
 from setuptools.command.build_ext import build_ext
 
-__version__ = "1.6"
+__version__ = "1.7"
 
 requires = [
     "numpy>=1.17",
     "scipy>=1.6.0",
     "scikit-image>=0.19",
+    "PyWavelets",
     "poppy",
     "opensimplex>=0.4",
     "numba>=0.57",

@@ -1,2 +1,1 @@
-cbi_toolbox>=1.6
-PyWavelets
+cbi_toolbox>=1.7
