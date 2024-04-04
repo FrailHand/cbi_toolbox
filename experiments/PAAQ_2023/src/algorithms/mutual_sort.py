@@ -38,7 +38,7 @@ def register_sequence(reference, moving, bins=20, subsampling=1):
     moving : array_like, [N, ...]
         The sequence to register, of size N, covering one period of the signal
     bins : int, optional
-        Number of bins for mutual informatino, by default 20
+        Number of bins for mutual information, by default 20
     subsampling : int, optional
         Subsampling factor allowing for sub-frame registration, by default 1
 
