@@ -113,6 +113,31 @@ def distribute_bin_all(dimension, workers):
     return bin_indexes, bin_sizes
 
 
+def max_workers():
+    """
+    Computes the maximum available workers for parallel computations on the system.
+
+    Returns
+    -------
+    int
+        The maximum number of workers available
+    """
+
+    uworkers = os.cpu_count()
+
+    try:
+        omp_threads = int(os.environ["OMP_NUM_THREADS"])
+    except KeyError:
+        omp_threads = uworkers
+
+    try:
+        affinity = len(os.sched_getaffinity(0))
+    except AttributeError:
+        affinity = uworkers
+
+    return min(omp_threads, affinity, uworkers)
+
+
 def parallelize(func, size, workers=None):
     """
     Launches a function multiple times in parallel using multithreading.
@@ -139,19 +164,12 @@ def parallelize(func, size, workers=None):
         order (see concurrent.futures.ThreadPoolExecutor.map).
     """
 
-    try:
-        omp_threads = int(os.environ["OMP_NUM_THREADS"])
-    except KeyError:
-        omp_threads = os.cpu_count()
+    mworkers = max_workers()
 
-    uworkers = os.cpu_count() if workers is None else workers
-
-    try:
-        affinity = len(os.sched_getaffinity(0))
-    except AttributeError:
-        affinity = uworkers
-
-    workers = min(omp_threads, affinity, size, uworkers)
+    if workers is None:
+        workers = mworkers
+    else:
+        workers = min(mworkers, workers)
 
     if workers == 1:
         out = func(0, size)
