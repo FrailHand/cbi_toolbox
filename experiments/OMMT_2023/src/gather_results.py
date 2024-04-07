@@ -1,5 +1,5 @@
 # Copyright (c) 2023 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #

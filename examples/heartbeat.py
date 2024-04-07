@@ -3,7 +3,7 @@ This example demonstrates how to simulate a 3D beating heart.
 """
 
 # Copyright (c) 2023 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #
@@ -36,7 +36,9 @@ coords = dynamic.sigsin_beat_3(phases, TEST_SIZE)
 print("Done simulating contraction")
 
 # Heart walls as an ellipsoid
-ellipse = primitives.forward_ellipse_3(coords, center=(.5, .5, .5), radius=(.2, .3, .4))
+ellipse = primitives.forward_ellipse_3(
+    coords, center=(0.5, 0.5, 0.5), radius=(0.2, 0.3, 0.4)
+)
 print("Done simulating the heart wall")
 
 # Adding texture using simplex noise

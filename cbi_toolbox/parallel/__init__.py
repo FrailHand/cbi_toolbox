@@ -3,7 +3,7 @@ The parallel package provides tools to split parallel computations.
 """
 
 # Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #

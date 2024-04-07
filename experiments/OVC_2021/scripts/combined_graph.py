@@ -1,5 +1,5 @@
 # Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #
@@ -110,7 +110,7 @@ fps_snr = results["fps"]
 dc_snr = results["dc"]
 fdc_snr = results["fdc"]
 
-for (plot, na) in zip(plots[1], nas):
+for plot, na in zip(plots[1], nas):
 
     na_idx = int((na - dnas[0] * 100) / 5)
 

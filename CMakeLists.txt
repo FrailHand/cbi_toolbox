@@ -1,5 +1,5 @@
 # Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #
@@ -30,13 +30,14 @@ else()
 endif()
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
+  set(CMAKE_BUILD_TYPE Release)
 endif()
 
 add_subdirectory(pybind11)
 find_package(OpenMP 2 REQUIRED)
 
 string(APPEND CMAKE_CXX_FLAGS " -Wall -pedantic")
+
 if(CMAKE_COMPILER_IS_GNUCXX)
   string(APPEND CMAKE_CXX_FLAGS " -Wextra")
 endif()
@@ -55,4 +56,3 @@ if(CUDAToolkit_FOUND)
   set_property(TARGET _cradon PROPERTY LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}splineradon/")
   set_property(TARGET _cradon PROPERTY LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}splineradon/")
 endif()
-

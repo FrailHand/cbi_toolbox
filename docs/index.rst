@@ -12,7 +12,7 @@ The framework can also be used for experiment design, as geometries can be virtu
   :alt: Demo image
 
 Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
-Copyright (c) 2024 UMONS, https://web.umons.ac.be/en/
+Copyright (c) 2024 UMONS, https://web.umons.ac.be/
 
 
 Written by François Marelli <francois.marelli@umons.ac.be>

@@ -14,13 +14,13 @@ Using pip
 
 Pip >=10 is highly recommended to ensure the install works.
 
-- Run pip install: ``pip install cbi-toolbox[mpi,plots,docs,ome]@git+https://github.com/idiap/cbi_toolbox.git`` (choose optional packages according to your needs)
+- Run pip install: ``pip install cbi-toolbox[mpi,plots,docs,ome]@git+https://github.com/MarelliF/cbi_toolbox.git`` (choose optional packages according to your needs)
 
 **PyPI hosted version is capped to 1.1.0 due to the addition of non PyPI hosted dependencies**
 
 Manual install from sources:
 
-- Clone the project with its submodules: ``git clone --recursive <url>``
+- Clone the project with its submodules: ``git clone --recursive git+https://github.com/MarelliF/cbi_toolbox.git``
 - Run pip install in the root folder: ``pip install .[mpi,plots,docs,ome]`` (choose optional packages according to your needs)
 
 
@@ -40,7 +40,7 @@ the install (in the square brackets):
 Using conda
 -----------
 
-- Clone the project with its submodules: ``git clone --recursive <url>``
+- Clone the project with its submodules: ``git clone --recursive git+https://github.com/MarelliF/cbi_toolbox.git``
 - Create a new environment unsing the environment.yml file: 
   ``conda env create -f environment.yml -n <environment name>``
 - Run pip install on the root folder: ``pip install .[mpi,plots,docs]`` (choose optional packages according to your needs)

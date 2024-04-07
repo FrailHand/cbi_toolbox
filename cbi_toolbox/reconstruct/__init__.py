@@ -2,15 +2,13 @@
 The reconstruct package provides reconstruction algorithms,
 as well as preprocessing tools and performance scores.
 
-
-
 [1] Liebling, M., et al. *"Four-dimensional cardiac imaging in living embryos via
 postacquisition synchronization of nongated slice sequences."* Journal of
 biomedical optics 10.5 (2005): 054001-054001
 """
 
 # Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #

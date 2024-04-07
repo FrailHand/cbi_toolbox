@@ -2,6 +2,7 @@ License
 -------
 
 Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
+Copyright (c) 2024 UMONS, https://web.umons.ac.be/
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:

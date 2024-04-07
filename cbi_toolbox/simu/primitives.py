@@ -11,7 +11,7 @@ arrays follow the ZXY convention, with
 """
 
 # Copyright (c) 2020 Idiap Research Institute, http://www.idiap.ch/
-# Written by François Marelli <francois.marelli@idiap.ch>
+# Written by François Marelli <francois.marelli@umons.ac.be>
 #
 # This file is part of CBI Toolbox.
 #
@@ -53,9 +53,9 @@ def quadrant_symmetry(quadrant):
     size = np.max(quadrant.shape)
 
     full_quadrant = np.zeros((size, size, size), dtype=bool)
-    full_quadrant[
-        : quadrant.shape[0], : quadrant.shape[1], : quadrant.shape[2]
-    ] = quadrant
+    full_quadrant[: quadrant.shape[0], : quadrant.shape[1], : quadrant.shape[2]] = (
+        quadrant
+    )
     full_quadrant[
         : quadrant.shape[1], : quadrant.shape[2], : quadrant.shape[0]
     ] |= quadrant.transpose((1, 2, 0))
