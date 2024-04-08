@@ -82,4 +82,6 @@ if __name__ == "__main__":
         del heart
         print(f"Done for chunk {chunk_i + 1}")
 
+    sample = np.transpose(sample, (0, 3, 1, 2))
+
     np.save(outpath / "sample.npy", sample)
