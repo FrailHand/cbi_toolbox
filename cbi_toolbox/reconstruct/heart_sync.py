@@ -154,35 +154,31 @@ def heart_shifts_4D(data, weights_k=(1, 1, 1), workers=None):
     return sol
 
 
-def heart_sync_4D(data, weights_k=(1, 1, 1), workers=None, in_place=False):
+def roll_4D(data, shifts, in_place=False):
     """
-    Synchronize a stack of periodic videos to obtain a 4D volume using the
-    method described in [1].
+    Roll a stack of periodic videos by the given shifts to obtain a 4D volume.
+    This is a convenience wrapper around np.roll.
 
     Parameters
     ----------
     data : np.ndarray [T, Z, X, Y]
         The data to be synchronized.
-    weights_k : np.ndarray
-        The wheights describing the importance of neighbouring slices when
-        solving the synchronization problem (see [1]).
-        `weights_k[0]` refers to the importance of direct neighbours,
-        `weights_k[1]` refers to the neighbours 2 slices away, etc.
-        By default (1, 1, 1), equivalent weights for slices up to a distance 3.
-    workers : int, optional
-        The number of cores to use for parallel processing, by default None (auto)
+    shifts : iterable (int)
+        The computed shift of each layer
+    in_place : bool, optional
+        Overwrite the input array, by default False
 
     Returns
     -------
     np.ndarray [T, Z, X, Y]
-        The synchronized array.
+        The shifted array.
 
     """
-
-    shifts = heart_shifts_4D(data, weights_k, workers)
 
     if not in_place:
         data = data.copy()
 
     for n in range(1, data.shape[1]):
-        data[:, n, ...] = np.roll(data[:, 0, ...], shifts[n], axis=0)
+        data[:, n, ...] = np.roll(data[:, n, ...], -shifts[n], axis=0)
+
+    return data
