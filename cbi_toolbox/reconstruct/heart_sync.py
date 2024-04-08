@@ -126,7 +126,7 @@ def heart_shifts_4D(data, weights_k=(1, 1, 1), workers=None):
 
         # Compute an initial solution based on 1 neighbour only
         sol_init, _, _, _ = linalg.lstsq(A_, s_)
-        sol_init = np.round((sol_init)).astype(int) % 20
+        sol_init = np.round((sol_init)).astype(int) % n_period
 
         s_corr.append(sol_init[:-delta_k] - sol_init[delta_k:])
 
@@ -149,7 +149,7 @@ def heart_shifts_4D(data, weights_k=(1, 1, 1), workers=None):
     s = s @ W
 
     sol, _, _, _ = linalg.lstsq(A, s)
-    sol = np.round((sol)).astype(int) % 20 + sol_init
+    sol = (np.round((sol)).astype(int) + sol_init) % n_period
 
     return sol
 
